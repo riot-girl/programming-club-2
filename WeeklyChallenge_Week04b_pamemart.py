@@ -26,103 +26,73 @@ __version__ = "0.0.1"
 
 from datetime import datetime
 
-def printArray(arr):
-    for i in range(len(arr)):
-        print ("%d, " %arr[i], end="")
+def getDivisors(num):
+    print("The divisors of the number are:")
+    for i in range(1,num+1):
+        if(num%i==0):
+            print(f'{i}',end=' ')
 
-def bubbleSort(arr):
-    n = len(arr)
+def getDivisorsimp(num):
+    print("The divisors of the number are:")
+    max = num
+    i = 1
+    while max >0 and i < max:
+        if(num%i==0):
+            max = num/i
+            print(f'{i} {int(num/i)}',end=' ')
+        i += 1
 
-    # Traverse through all array elements
-    for i in range(n):
+def prime(num):
+    # Function to check if a number is prime or not
+    start = datetime.now()
 
-        # Last i elements are already in place
-        for j in range(0, n-i-1):
+    # prime numbers are greater than 1
+    if num > 1:
+        # check for factors
+        for i in range(2,num):
+            if (num % i) == 0:
+                print(num,"is not a prime number")
+                getDivisors(num);
+                break
+            else:
+                print(num,"is a prime number")
+    # if input number is less than
+    # or equal to 1, it is not prime
+    else:
+        print(num,"is not a prime number")
+    end = datetime.now()
+    print(f'\nTime to run: {end-start}')
 
-            # traverse the array from 0 to n-i-1
-            # Swap if the element found is greater
-            # than the next element
-            if arr[j] > arr[j+1] :
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-            
-        print (f"\nThis iteration array is:", end=' ')
-        printArray(arr)
-    
-def bubbleSortimp(arr):
-    n = len(arr)
+def primeimp(num):
+    # Function to check if a number is prime or not
+    start = datetime.now()
 
-    # Traverse through all array elements
-    for i in range(0,n-1):
-        sorted = 0
-        # Last i elements are already in place
-        for j in range(0, n-i-1):
-            # traverse the array from 0 to n-i-1
-            # Swap if the element found is greater
-            # than the next element
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-                sorted += 1
-        if i > 0 and sorted == 0:
-            break
-
-        print (f"\nThis iteration array is:", end=' ')
-        printArray(arr)
-
-def bubbleSortrev(arr):
-    n = len(arr)
-
-    # Traverse through all array elements
-    for i in range(0,n-1):
-        sorted = 0
-        # Last i elements are already in place
-        for j in range(0, n-i-1):
-            # traverse the array from 0 to n-i-1
-            # Swap if the element found is greater
-            # than the next element
-            if arr[j] < arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-                sorted += 1
-        if i > 0 and sorted == 0:
-            break
-
-        print (f"\nThis iteration array is:", end=' ')
-        printArray(arr)
+    # prime numbers are greater than 1
+    if num > 1:
+        # check for factors
+        for i in range(2,num):
+            if (num % i) == 0:
+                print(num,"is not a prime number")
+                getDivisorsimp(num);
+                break
+            else:
+                print(num,"is a prime number")
+    # if input number is less than
+    # or equal to 1, it is not prime
+    else:
+        print(num,"is not a prime number")
+    end = datetime.now()
+    print(f'\nTime to run: {end-start}')
 
 def main():
-    # Driver code to test above
-    arr = [64, 34, 25, 12, 22, 11, 90]
-    start1 = datetime.now()
-    print (f" \nFirst Unsorted array is:", end=' ')
-    printArray(arr)
+    num = 35000
 
-    bubbleSort(arr)
+    # To take input from the user
+    #num = int(input("Enter a number: "))
+    
+    prime(num)
+    primeimp(num)
 
-    print (f" \nFinal First Sorted array is:", end=' ')
-    printArray(arr)
-    end1 = datetime.now()
-    print("\nTime 1:    " + str(end1-start1))
-
-    arr = [64, 34, 25, 12, 22, 11, 90]
-    start2 = datetime.now()
-    print (f" \nSecond Unsorted array is:", end=' ')
-    printArray(arr)
-    bubbleSortimp(arr)
-
-    print (f" \nFinal Second Sorted array is:", end=' ')
-    printArray(arr)
-    end2 = datetime.now()
-    print("\nTime 2:    " + str(end2-start2))
-
-    arr = [64, 34, 25, 12, 22, 11, 90]
-    start2 = datetime.now()
-    print (f" \nThird Unsorted array is:", end=' ')
-    printArray(arr)
-    bubbleSortrev(arr)
-
-    print (f" \nFinal Third Sorted array is:", end=' ')
-    printArray(arr)
-    end2 = datetime.now()
-    print("\nTime 3:    " + str(end2-start2))
 
 if __name__ == "__main__":
     main()
