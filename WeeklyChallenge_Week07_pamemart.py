@@ -40,29 +40,17 @@ class CiscoEngineer(metaclass=abc.ABCMeta):
     def __init__(self, name):
         self.name = name
 
-
     @abc.abstractmethod
-    def tacWork(self):
+    def Work(self):
         pass
-    
-    @abc.abstractmethod
-    def psWork(self):
-        pass
-    
-    def thirPartyWork(self):
-        print("This is work for Third Party Engineer. Go away!")
 
 
 class CiscoTacEngineer(CiscoEngineer):
     def __init__(self,name):
         CiscoEngineer.__init__(self, name)
     
-    def tacWork(self):
+    def Work(self):
         print("Hey!, I'm working on a TAC case.")
-
-
-    def psWork(self):
-        pass
 
 
     def solveCase(self, techStripe):
@@ -72,6 +60,8 @@ class CiscoTacEngineer(CiscoEngineer):
             print("I love to solve Wireless cases")
         elif(techStripe=='DC'):
             print("DC is my passion")
+        elif(techStripe=='Security'):
+            print("Security is my passion")
 
 
 
@@ -79,11 +69,7 @@ class CiscoPSEngineer(CiscoEngineer):
     def __init__(self,name):
         CiscoEngineer.__init__(self, name)
     
-    def tacWork(self):
-        pass
-
-
-    def psWork(self):
+    def Work(self):
         print("Hey!, I'm working on a PS deliverable.")
 
 
